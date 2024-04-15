@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
   ActivityIndicator,
+  ImageBackground,
 } from "react-native";
 import * as Speech from "expo-speech";
 import { Picker } from "@react-native-picker/picker";
@@ -494,6 +495,13 @@ export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#000" />
+      <View style={styles.imageContainer}>
+        <ImageBackground
+          source={require("./assets/bg-cover.jpg")}
+          style={styles.image}
+          imageStyle={styles.imageStyle}
+        ></ImageBackground>
+      </View>
       <View>
         <Text style={styles.title}>Text-to-Speech App</Text>
       </View>
@@ -515,7 +523,7 @@ export default function App() {
           selectedValue={selectedVoice}
           onValueChange={(itemValue) => setSelectedVoice(itemValue)}
           style={styles.picker}
-          dropdownIconColor="#fff"
+          dropdownIconColor="#FF6347"
         >
           <Picker.Item label="Select a voice..." value={null} />
           {voices.map((voice) => (
@@ -537,8 +545,8 @@ export default function App() {
         step={0.1}
         value={pitch}
         onValueChange={(value) => setPitch(value)}
-        thumbTintColor="#fff"
-        minimumTrackTintColor="#fff"
+        thumbTintColor="#FF6347"
+        minimumTrackTintColor="#FF6347"
         maximumTrackTintColor="#666"
       />
       <Text style={styles.label}>Speed: {rate.toFixed(1)}</Text>
@@ -549,8 +557,8 @@ export default function App() {
         step={0.1}
         value={rate}
         onValueChange={(value) => setRate(value)}
-        thumbTintColor="#fff"
-        minimumTrackTintColor="#fff"
+        thumbTintColor="#FF6347"
+        minimumTrackTintColor="#FF6347"
         maximumTrackTintColor="#666"
       />
     </View>
@@ -565,6 +573,18 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: "#111",
   },
+  imageContainer: {
+    marginBottom: 20,
+  },
+  image: {
+    width: 300,
+    height: 200,
+    borderRadius: 8,
+    overflow: "hidden",
+  },
+  imageStyle: {
+    resizeMode: "cover",
+  },
   title: {
     fontSize: 28,
     fontWeight: "bold",
@@ -573,12 +593,21 @@ const styles = StyleSheet.create({
   },
   input: {
     width: "100%",
-    height: 50,
-    borderColor: "#666",
+    height: 60,
+    borderColor: "#FF6347",
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
     color: "#fff",
+    fontSize: 17,
+    shadowColor: "#FF6347",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 2,
   },
   label: {
     fontSize: 16,
@@ -590,10 +619,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   iconButton: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#FF6347",
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
+    shadowColor: "#FF6347",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   pickerContainer: {
     flexDirection: "row",
